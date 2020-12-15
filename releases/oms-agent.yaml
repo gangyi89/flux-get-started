@@ -8,9 +8,10 @@ metadata:
     fluxcd.io/automated: "true"
 spec:
   releaseName: oms-agent
+  targetNamespace: kube-system
   chart:
     repository: https://microsoft.github.io/charts/repo
-    name: azmon-containers-release-1
+    name: azuremonitor-containers
     version: 2.7.9
   values:
     omsagent:
