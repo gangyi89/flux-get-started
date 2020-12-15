@@ -1,0 +1,23 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: oms-agent
+  namespace: demo
+  annotations:
+    fluxcd.io/automated: "true"
+spec:
+  releaseName: oms-agent
+  targetNamespace: kube-system
+  chart:
+    repository: https://microsoft.github.io/charts/repo
+    name: azmon-containers-release-1
+    version: 2.7.9
+  values:
+    omsagent:
+      secret:
+        wsid: e83573c7-65b7-46db-824d-dece1e23e25c
+        key: 9rEz3zG/NnBa1v+yqtKYpTmduJxgrZRI8fXGu85+PUUd1HsGgAIlldm30DnJWACCbGowAQoCG0qRcz6ZHI2bxQ==
+      env:
+        clusterName: on-prem
+      proxy: http://user01:password@gateway.southeastasia.cloudapp.azure.com:8080
